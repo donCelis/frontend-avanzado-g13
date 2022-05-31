@@ -1,10 +1,10 @@
 import '../styles/App.css'
+import Countries from './Countries'
 
-function App() {
-
+function App () {
   return (
-    <div className="App">
-      
+    <div className='App'>
+      <Countries />
     </div>
   )
 }
