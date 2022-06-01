@@ -15,11 +15,10 @@ const getCountry = async (name) => {
 }
 
 const getData = async (name = '') => {
-  const setName = name ? `/name/ ${name}` : '/all'
+  const setName = name ? `/name/${name}` : '/all'
 
   const req = await axios.get(baseUrl + setName)
-  const res = req
-  return res
+  return req
 }
 
 export { getCountry, getCountries, getData }

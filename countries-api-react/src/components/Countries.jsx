@@ -2,15 +2,15 @@ import { useEffect, useState } from 'react'
 import { getData } from '../services'
 
 const Countries = () => {
-  const [listCountries, setListCountries] = useState([])
+  const [list, setList] = useState([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState('')
 
   useEffect(() => {
     const setData = async () => {
       try {
-        const { data: countries } = await getData('colombia')
-        setListCountries(countries)
+        const { data: countries } = await getData()
+        setList(countries)
       } catch ({ message }) {
         setError(message)
       } finally {
@@ -20,16 +20,14 @@ const Countries = () => {
     setData()
   }, [])
 
-  if (error) {
-    return (<p>{error}</p>)
-  }
+  if (error) return <p>{error}</p>
 
-  if (loading) {
-    return (<p>...Loading</p>)
-  }
+  if (loading) return <p>...loading</p>
 
   return (
-    <p>{listCountries[0].name.common}</p>
+    list.map((index, key) => (
+      <p key={key}>{index.name.official}</p>
+    ))
   )
 }
 
