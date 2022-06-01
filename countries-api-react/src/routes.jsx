@@ -13,8 +13,16 @@ const Paths = () => {
       element: <App />
     },
     {
-      path: '/country',
+      path: '/country/:name',
       element: <Country />
+    },
+    {
+      path: '/404',
+      element: <p className='text-center'>Page not found</p>
+    },
+    {
+      path: '*',
+      element: <Navigate to='/404' replace />
     }
   ])
 
