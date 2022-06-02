@@ -3,9 +3,11 @@ import Countries from '../components/Countries'
 
 function App () {
   return (
-    <div className='App container'>
-      <Countries />
-    </div>
+    <>
+      <div className='App container'>
+        <Countries />
+      </div>
+    </>
   )
 }
 

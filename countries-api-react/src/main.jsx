@@ -8,12 +8,16 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 // Router
 import Paths from './routes'
 
+// components
+import NavBar from './components/NavBar'
+
 const root = document.getElementById('root')
 const container = createRoot(root)
 
 container.render(
   <StrictMode>
     <BrowserRouter>
+      <NavBar />
       <Paths />
     </BrowserRouter>
   </StrictMode>

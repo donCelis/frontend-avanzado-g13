@@ -15,7 +15,9 @@ const Countries = () => {
           <Link to={`/country/${index.name.common}`}>
             <article className='card'>
               <img className='card-img-top' src={index.flags.svg} alt={index.name.common} />
-              <p>{index.name.common}</p>
+              <div className='card-body'>
+                <p className='card-title'>{index.name.common}</p>
+              </div>
             </article>
           </Link>
         </div>

@@ -1,4 +1,4 @@
-import { Link, useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import useGetData from '../hooks/useGetData'
 
 const Country = () => {
@@ -7,15 +7,20 @@ const Country = () => {
 
   if (error) return <p>{error}</p>
 
-  if (loading) return <p>...loading</p>
+  if (loading) {
+    return (
+      <section className='container py-5'>
+        <p>...loading</p>
+      </section>
+    )
+  }
 
   return (
-    <>
-      <p>Country</p>
+    <section className='container py-5'>
       <p>{list.name.common}</p>
       <p>{list.capital}</p>
-      <Link to='/'>Home</Link>
-    </>
+      <img width={400} height={300} src={list.flags.svg} alt={list.name.common} />
+    </section>
   )
 }
 export default Country
