@@ -8,6 +8,9 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 // Router
 import Paths from './routes'
 
+// contextProvider
+import { ContextProvider } from './context'
+
 // components
 import NavBar from './components/NavBar'
 
@@ -16,9 +19,11 @@ const container = createRoot(root)
 
 container.render(
   <StrictMode>
-    <BrowserRouter>
-      <NavBar />
-      <Paths />
-    </BrowserRouter>
+    <ContextProvider>
+      <BrowserRouter>
+        <NavBar />
+        <Paths />
+      </BrowserRouter>
+    </ContextProvider>
   </StrictMode>
 )

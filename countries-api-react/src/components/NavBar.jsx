@@ -1,12 +1,20 @@
 import { useRef } from 'react'
 import { Link } from 'react-router-dom'
+import useAppContext from '../hooks/useAppContext'
 
 const NavBar = () => {
   const searchRef = useRef()
 
+  const { setQuery } = useAppContext()
+
   const handleSubmit = (event) => {
     event.preventDefault()
-    searchRef.current.value
+    setQuery(searchRef.current.value)
+    searchRef.current.value = ''
+  }
+
+  const onResetQuery = () => {
+    setQuery('')
   }
 
   return (
@@ -19,7 +27,7 @@ const NavBar = () => {
         <div className='collapse navbar-collapse' id='mainNavbar'>
           <ul className='navbar-nav me-auto mb-2 mb-lg-0'>
             <li className='nav-item'>
-              <Link className='nav-link active' aria-current='page' to='/countries'>Home</Link>
+              <Link onClick={onResetQuery} className='nav-link active' aria-current='page' to='/countries'>Home</Link>
             </li>
           </ul>
           <form className='d-flex' onSubmit={handleSubmit}>

@@ -1,8 +1,10 @@
 import { Link } from 'react-router-dom'
 import useGetData from '../hooks/useGetData'
+import useAppContext from '../hooks/useAppContext'
 
 const Countries = () => {
-  const { list, error, loading } = useGetData()
+  const { query } = useAppContext()
+  const { list, error, loading } = useGetData(query)
 
   if (error) return <p>{error}</p>
 
