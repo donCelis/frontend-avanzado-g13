@@ -4,17 +4,15 @@ import useAppContext from '../hooks/useAppContext'
 
 const NavBar = () => {
   const searchRef = useRef()
-
-  const { setQuery } = useAppContext()
+  const { handleFilterCountries } = useAppContext()
 
   const handleSubmit = (event) => {
     event.preventDefault()
-    setQuery(searchRef.current.value)
-    searchRef.current.value = ''
-  }
-
-  const onResetQuery = () => {
-    setQuery('')
+    const trimValue = searchRef.current.value.trim()
+    if (trimValue !== '') {
+      handleFilterCountries(trimValue)
+    }
+    event.target.reset()
   }
 
   return (
@@ -27,7 +25,7 @@ const NavBar = () => {
         <div className='collapse navbar-collapse' id='mainNavbar'>
           <ul className='navbar-nav me-auto mb-2 mb-lg-0'>
             <li className='nav-item'>
-              <Link onClick={onResetQuery} className='nav-link active' aria-current='page' to='/countries'>Home</Link>
+              <Link className='nav-link active' aria-current='page' to='/countries'>Home</Link>
             </li>
           </ul>
           <form className='d-flex' onSubmit={handleSubmit}>
