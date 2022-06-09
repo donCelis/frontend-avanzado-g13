@@ -1,11 +1,16 @@
 import '../styles/App.css'
-import Countries from '../components/Countries'
+import NavBar from '../components/NavBar'
+import { Outlet } from 'react-router-dom'
+import { Suspense } from 'react'
 
 function App () {
   return (
     <>
-      <div className='App container'>
-        <Countries />
+      <NavBar />
+      <div className='App container py-5'>
+        <Suspense fallback={<p>...loading suspense</p>}>
+          <Outlet />
+        </Suspense>
       </div>
     </>
   )

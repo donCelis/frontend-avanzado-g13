@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { getData } from '../services'
 
+// como hacer un fetching de datos con un custom hook
 const useGetData = (name = '') => {
   const [list, setList] = useState([])
   const [loading, setLoading] = useState(true)
