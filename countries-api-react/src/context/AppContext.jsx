@@ -2,7 +2,7 @@ import { createContext, useState } from 'react'
 
 const AppContext = createContext(null)
 
-const ContextProvider = ({ children }) => {
+const AppProvider = ({ children }) => {
   const [countries, setCountries] = useState([])
   const [filterCountries, setFilterCountries] = useState([])
   const [sms, setSms] = useState({ type: '' })
@@ -40,4 +40,4 @@ const ContextProvider = ({ children }) => {
   )
 }
 
-export { AppContext, ContextProvider }
+export { AppContext, AppProvider }

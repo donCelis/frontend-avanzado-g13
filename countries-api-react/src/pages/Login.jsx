@@ -1,6 +1,27 @@
+import { useState } from 'react'
+import { useAuthContext } from '../context/AuthContext'
+
 const Login = () => {
+  const { loginAuth } = useAuthContext()
+  const [error, setError] = useState(null)
+
+  const defaultValues = {
+    username: 'kminchelle',
+    password: '0lelplR'
+  }
+
+  const handleSubmit = async (event) => {
+    event.preventDefault()
+    try {
+      await loginAuth(defaultValues)
+    } catch (wrong) {
+      setError(wrong.response.data.message)
+    }
+  }
+
   return (
     <form
+      onSubmit={handleSubmit}
       style={{
         margin: '5rem auto',
         width: '400px',
@@ -10,8 +31,9 @@ const Login = () => {
       }}
       className='border border-primary rounded'
     >
-      <div>
-        <h3 className='text-center m-0'>Login</h3>
+      <div className='text-center'>
+        <h3 className='m-0'>Login</h3>
+        {error && <p className='m-0 text-danger'>{error}</p>}
       </div>
       <div>
         <input
@@ -19,6 +41,7 @@ const Login = () => {
           placeholder='Username'
           type='text'
           className='form-control'
+          autoComplete='off'
         />
       </div>
       <div>

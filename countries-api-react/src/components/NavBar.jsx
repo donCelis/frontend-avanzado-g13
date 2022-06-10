@@ -13,8 +13,8 @@ const NavBar = () => {
     if (trimValue !== '') {
       handleFilterCountries(trimValue)
       navigate('/countries/search', { replace: true })
+      event.target.reset()
     }
-    event.target.reset()
   }
 
   return (

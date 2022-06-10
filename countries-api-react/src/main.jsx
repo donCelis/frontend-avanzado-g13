@@ -9,17 +9,17 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import Paths from './routes'
 
 // contextProvider
-import { ContextProvider } from './context/AppContext'
+import { AuthProvider } from './context/AuthContext'
 
 const root = document.getElementById('root')
 const container = createRoot(root)
 
 container.render(
   <StrictMode>
-    <ContextProvider>
+    <AuthProvider>
       <BrowserRouter>
         <Paths />
       </BrowserRouter>
-    </ContextProvider>
+    </AuthProvider>
   </StrictMode>
 )
