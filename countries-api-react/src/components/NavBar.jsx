@@ -1,9 +1,10 @@
 import { useRef } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import useAppContext from '../hooks/useAppContext'
 
 const NavBar = () => {
   const searchRef = useRef()
+  const navigate = useNavigate()
   const { handleFilterCountries } = useAppContext()
 
   const handleSubmit = (event) => {
@@ -11,6 +12,7 @@ const NavBar = () => {
     const trimValue = searchRef.current.value.trim()
     if (trimValue !== '') {
       handleFilterCountries(trimValue)
+      navigate('/countries/search', { replace: true })
     }
     event.target.reset()
   }

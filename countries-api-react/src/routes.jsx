@@ -2,6 +2,7 @@ import { Navigate, useRoutes } from 'react-router-dom'
 import App from './pages/App'
 import Countries from './components/Countries'
 import Country from './components/Country'
+import Search from './components/Search'
 
 const Paths = () => {
   const element = useRoutes([
@@ -20,7 +21,12 @@ const Paths = () => {
         {
           path: 'country/:name',
           element: <Country />
+        },
+        {
+          path: 'search',
+          element: <Search />
         }
+
       ]
     },
     {

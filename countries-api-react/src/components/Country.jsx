@@ -15,7 +15,7 @@ const Country = () => {
     <article>
       <p>{country[0].name.common}</p>
       <p>{country[0].capital}</p>
-      <img width={400} height={300} src={country[0].flags.svg} alt={country[0].name.common} />
+      <img loading='lazy' width={400} height={300} src={country[0].flags.svg} alt={country[0].name.common} />
     </article>
   )
 }
