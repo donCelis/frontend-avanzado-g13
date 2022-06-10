@@ -1,5 +1,10 @@
 import { Navigate, useRoutes } from 'react-router-dom'
+
+// pages
 import App from './pages/App'
+import Login from './pages/Login'
+
+// components
 import Countries from './components/Countries'
 import Country from './components/Country'
 import Search from './components/Search'
@@ -8,7 +13,11 @@ const Paths = () => {
   const element = useRoutes([
     {
       path: '/',
-      element: <Navigate to='/countries' />
+      element: <Navigate to='/login' replace />
+    },
+    {
+      path: '/login',
+      element: <Login />
     },
     {
       path: '/countries',
