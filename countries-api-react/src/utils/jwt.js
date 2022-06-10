@@ -7,16 +7,17 @@ const isValidToken = (token) => {
   }
 
   const { exp } = jwtDecode(token)
-  const currentTime = Date.now()
+  // el error es que estaba diviendo entre cien, y es entre mil
+  const currentTime = Date.now() / 1000
 
   // const converDate = (date) => new Date(date)
 
   // console.log('current', converDate(currentTime))
-  // console.log('exp', converDate(exp * 1000))
+  // console.log('exp', exp * 1000)
 
   // console.log((exp * 1000) > currentTime)
 
-  return (exp * 1000) > currentTime
+  return exp > currentTime
 }
 
 // guardar la sesión

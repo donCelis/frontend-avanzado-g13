@@ -15,6 +15,7 @@ const AuthProvider = ({ children }) => {
     })
 
     const user = response.data
+
     setSession(user.token)
     setAuthed(true)
     console.log('inicio de sesión correcto')
@@ -23,6 +24,7 @@ const AuthProvider = ({ children }) => {
   useEffect(() => {
     const token = window.localStorage.getItem('token')
     setInit(true)
+    console.log(isValidToken(token))
 
     try {
       if (token && isValidToken(token)) {
