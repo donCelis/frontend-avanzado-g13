@@ -2,7 +2,9 @@ import { useState } from 'react'
 import { useAuthContext } from '../context/AuthContext'
 
 const Login = () => {
-  const { loginAuth } = useAuthContext()
+  const { loginAuth, authed } = useAuthContext()
+
+  console.log(authed)
 
   const [userdata, setUserData] = useState({
     username: 'kminchelle',

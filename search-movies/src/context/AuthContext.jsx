@@ -10,8 +10,11 @@ const AuthContext = createContext({
 
 const AuthProvider = ({ children }) => {
   const [authed, setAuthed] = useState(() => {
-    return isValidToken(window.localStorage.token)
+    const token = window.localStorage.token || ''
+
+    return !!(token && isValidToken(token))
   })
+
   const [init, setInit] = useState(false)
 
   // funciones para modificar el contexto (estado global)
