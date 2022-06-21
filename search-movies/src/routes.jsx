@@ -14,6 +14,7 @@ const Paths = () => {
       <Routes>
         <Route path='/' element={<Navigate to='/login' replace />} />
         <Route path='/login' element={<Login />} index />
+        <Route path='/app' element={<App />} index />
       </Routes>
     </Router>
   )

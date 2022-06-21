@@ -1,13 +1,27 @@
 import { useState } from 'react'
+import { useAuthContext } from '../context/AuthContext'
 
 const Login = () => {
+  const { loginAuth } = useAuthContext()
+
   const [userdata, setUserData] = useState({
     username: 'kminchelle',
     password: '0lelplR'
   })
 
+  const handleForm = async (e) => {
+    e.preventDefault()
+    const username = e.target.username.value
+    const password = e.target.password.value
+    try {
+      await loginAuth(username, password)
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
   return (
-    <form className='form-login border border-primary'>
+    <form onSubmit={handleForm} className='form-login border border-primary'>
       <div className='mb-3 text-center'>
         <h3>Search Movies</h3>
       </div>
