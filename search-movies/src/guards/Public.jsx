@@ -4,7 +4,7 @@ import { useAuthContext } from '../context/AuthContext'
 const Public = ({ children }) => {
   const { authed } = useAuthContext()
 
-  if (authed) return <Navigate to='/app' replace />
+  if (authed) return <Navigate to='/app/main' replace />
 
   return <>{children}</>
 }

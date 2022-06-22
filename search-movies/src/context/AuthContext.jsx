@@ -1,6 +1,7 @@
 import { createContext, useContext, useEffect, useState } from 'react'
 import axios from 'axios'
 import { isValidToken, setSession } from '../utils/jwt'
+import jwtDecode from 'jwt-decode'
 
 const AuthContext = createContext({
   authed: false,
@@ -15,6 +16,8 @@ const AuthProvider = ({ children }) => {
     return !!(token && isValidToken(token))
   })
 
+  const [globalUser, setGlobalUser] = useState(null)
+
   const [init, setInit] = useState(false)
 
   // funciones para modificar el contexto (estado global)
@@ -24,6 +27,7 @@ const AuthProvider = ({ children }) => {
 
     const user = response.data
     setSession(user.token)
+    setGlobalUser(jwtDecode(window.localStorage.token))
     setAuthed(true)
   }
 
@@ -35,6 +39,7 @@ const AuthProvider = ({ children }) => {
     try {
       if (token && isValidToken(token)) {
         setSession(token)
+        setGlobalUser(jwtDecode(window.localStorage.token))
         setAuthed(true)
       } else {
         setAuthed(false)
@@ -47,7 +52,8 @@ const AuthProvider = ({ children }) => {
   const initialState = {
     loginAuth,
     authed,
-    init
+    init,
+    globalUser
   }
 
   return (
