@@ -4,6 +4,8 @@ import {
   Route,
   Navigate
 } from 'react-router-dom'
+import Private from './guards/Private'
+import Public from './guards/Public'
 // pages
 import App from './pages/App'
 import Login from './pages/Login'
@@ -13,8 +15,24 @@ const Paths = () => {
     <Router>
       <Routes>
         <Route path='/' element={<Navigate to='/login' replace />} />
-        <Route path='/login' element={<Login />} index />
-        <Route path='/app' element={<App />} index />
+        <Route
+          path='/login'
+          element={
+            <Public>
+              <Login />
+            </Public>
+          }
+          index
+        />
+        <Route
+          path='/app'
+          element={
+            <Private>
+              <App />
+            </Private>
+          }
+          index
+        />
       </Routes>
     </Router>
   )
