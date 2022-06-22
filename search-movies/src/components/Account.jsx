@@ -1,7 +1,15 @@
+import { useNavigate } from 'react-router-dom'
 import { useAuthContext } from '../context/AuthContext'
 
 const Account = () => {
-  const { globalUser } = useAuthContext()
+  const { globalUser, logOut } = useAuthContext()
+
+  const navigate = useNavigate()
+
+  const handleLogut = () => {
+    logOut()
+    navigate('/login', { replace: true })
+  }
 
   return globalUser && (
     <>
@@ -11,7 +19,7 @@ const Account = () => {
         <div className='card-body'>
           <h5 className='card-title'>{globalUser.username}</h5>
           <p className='card-text'>{globalUser.email}</p>
-          <a href='#' className='btn btn-primary'>Go somewhere</a>
+          <button onClick={handleLogut} className='btn btn-primary'>Log Out</button>
         </div>
       </div>
     </>

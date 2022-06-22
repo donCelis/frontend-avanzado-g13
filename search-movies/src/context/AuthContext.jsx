@@ -31,6 +31,11 @@ const AuthProvider = ({ children }) => {
     setAuthed(true)
   }
 
+  const logOut = () => {
+    setSession(null)
+    setAuthed(false)
+  }
+
   // cuando se actualice el navegador va a setear el login
   useEffect(() => {
     const token = window.localStorage.token || ''
@@ -51,6 +56,7 @@ const AuthProvider = ({ children }) => {
 
   const initialState = {
     loginAuth,
+    logOut,
     authed,
     init,
     globalUser
